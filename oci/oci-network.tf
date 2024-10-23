@@ -17,6 +17,13 @@ resource "oci_core_subnet" "ph-subnet" {
   vcn_id         = oci_core_vcn.ph-vcn.id
   cidr_block     = var.vcn_cidr
   display_name   = "${var.ph_prefix}-subnet"
+  security_list_ids = [
+    oci_core_security_list.monitoring.id,
+    try(
+      oci_core_default_security_list.ph-security-list-nodirectdns[0].id,
+      oci_core_default_security_list.ph-security-list-directdns[0].id
+    ),
+  ]
 }
 
 resource "oci_core_default_route_table" "ph-route-table" {
