@@ -1,12 +1,14 @@
 terraform {
   required_providers {
     oci = {
-      source = "oracle/oci"
+      source  = "oracle/oci"
+      version = "~> 6.14.0"
     }
   }
 }
 
 provider "oci" {
+  config_file_profile = var.oci_config_profile
 }
 
 variable "oci_config_profile" {
