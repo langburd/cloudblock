@@ -105,6 +105,22 @@ resource "oci_core_default_security_list" "ph-security-list-directdns" {
     }
   }
   ingress_security_rules {
+    protocol = 6
+    source   = "104.30.134.89/32"
+    tcp_options {
+      max = "22"
+      min = "22"
+    }
+  }
+  ingress_security_rules {
+    protocol = 6
+    source   = "104.30.134.89/32"
+    tcp_options {
+      max = "443"
+      min = "443"
+    }
+  }
+  ingress_security_rules {
     protocol = 17
     source   = "0.0.0.0/0"
     udp_options {
