@@ -1,8 +1,17 @@
 terraform {
+  required_version = ">= 1.0"
   required_providers {
     oci = {
       source  = "oracle/oci"
-      version = "~> 6.14.0"
+      version = "~> 6.0"
+    }
+    http = {
+      source  = "hashicorp/http"
+      version = "~> 3.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.0"
     }
   }
 }
@@ -152,4 +161,9 @@ variable "doh_provider" {
 variable "vpn_traffic" {
   type        = string
   description = "dns or all, sets the Wireguard VPN client configuration to route only dns traffic or all traffic through the VPN."
+}
+
+variable "work_ip" {
+  type        = string
+  description = "your work ip"
 }

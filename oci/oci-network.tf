@@ -106,7 +106,7 @@ resource "oci_core_default_security_list" "ph-security-list-directdns" {
   }
   ingress_security_rules {
     protocol = 6
-    source   = "104.30.134.89/32"
+    source   = var.work_ip
     tcp_options {
       max = "22"
       min = "22"
@@ -114,7 +114,7 @@ resource "oci_core_default_security_list" "ph-security-list-directdns" {
   }
   ingress_security_rules {
     protocol = 6
-    source   = "104.30.134.89/32"
+    source   = var.work_ip
     tcp_options {
       max = "443"
       min = "443"
