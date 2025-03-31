@@ -41,3 +41,8 @@ terraform destroy -var-file="oci.tfvars"
 
 OUTPUT
 }
+
+output "ubuntu_image_id" {
+  description = "The OCID of the Ubuntu 22.04 image"
+  value       = data.oci_core_images.ubuntu_image.images[0].id
+}
