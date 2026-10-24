@@ -20,8 +20,14 @@ resource "oci_objectstorage_object_lifecycle_policy" "ph-bucket-lifecycle" {
     is_enabled  = true
     name        = "${var.ph_prefix}-bucket-lifecycle"
     target      = "previous-object-versions"
-    time_amount = 30
+    time_amount = var.bucket_lifecycle_time_amount
     time_unit   = "DAYS"
   }
   depends_on = [oci_identity_policy.ph-id-storageobject-policy, oci_objectstorage_bucket.ph-bucket]
+}
+
+variable "bucket_lifecycle_time_amount" {
+  description = "Time amount for bucket lifecycle rule"
+  type        = number
+  default     = 3
 }
